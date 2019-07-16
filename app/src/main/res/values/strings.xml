@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="network_connection_error">Internet connection lost, please retry again</string>
+
+</resources>
