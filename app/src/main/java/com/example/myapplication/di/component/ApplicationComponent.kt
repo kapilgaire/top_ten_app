@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.myapplication.MyApp
 import com.example.myapplication.di.ApplicationContext
 import com.example.myapplication.di.module.ApplicationModule
+import com.example.myapplication.utils.network.NetworkHelper
 import dagger.Component
 import javax.inject.Singleton
 
@@ -18,4 +19,7 @@ interface ApplicationComponent{
 
     @ApplicationContext
     fun getContext(): Context
+
+    fun getNetworkHelper(): NetworkHelper
+
 }

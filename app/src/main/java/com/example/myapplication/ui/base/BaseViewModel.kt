@@ -9,7 +9,7 @@ import com.example.myapplication.utils.network.NetworkHelper
 
 abstract class BaseViewModel(
     protected val networkHelper: NetworkHelper
-    ) : ViewModel() {
+) : ViewModel() {
 
     val messageStringId: MutableLiveData<Resources<Int>> = MutableLiveData()
 
@@ -25,5 +25,7 @@ abstract class BaseViewModel(
             messageStringId.postValue(Resources.error(R.string.network_connection_error))
             false
         }
+
+    abstract fun onCreate()
 
 }

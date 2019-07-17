@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.myapplication.MyApp
 import com.example.myapplication.di.ApplicationContext
+import com.example.myapplication.utils.network.NetworkHelper
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,6 +22,9 @@ class ApplicationModule(private val application: MyApp) {
     fun provideContext(): Context= application
 
 
+    @Singleton
+    @Provides
+    fun provideNetworkHelper(): NetworkHelper = NetworkHelper(application)
 
 
 }

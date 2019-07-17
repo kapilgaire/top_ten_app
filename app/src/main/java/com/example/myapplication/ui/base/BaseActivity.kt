@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.example.myapplication.MyApp
 import com.example.myapplication.di.component.ActivityComponent
 import com.example.myapplication.di.component.DaggerActivityComponent
+import com.example.myapplication.di.module.ActivityModule
 import com.mindorks.bootcamp.instagram.utils.display.Toaster
 import javax.inject.Inject
 
@@ -22,13 +23,17 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
         setContentView(provideLayoutInt())
         setUpObservers()
         setupView(savedInstanceState)
+        viewModel.onCreate()
+
     }
 
     private fun buildActivityComponent() =
         DaggerActivityComponent
             .builder()
             .applicationComponent((application as MyApp).applicationComponent)
+            .activityModule(ActivityModule(this))
             .build()
+
 
 
     protected open fun setUpObservers() {
