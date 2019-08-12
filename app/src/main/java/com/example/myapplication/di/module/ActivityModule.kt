@@ -2,6 +2,7 @@ package com.example.myapplication.di.module
 
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.ui.base.BaseActivity
+import com.example.myapplication.ui.main.MainViewModel
 import com.example.myapplication.ui.splash.SplashViewModel
 import com.example.myapplication.utils.ViewModelProviderFactory
 import com.example.myapplication.utils.network.NetworkHelper
@@ -17,6 +18,12 @@ class ActivityModule(private val activity: BaseActivity<*>) {
         .of(activity,ViewModelProviderFactory(SplashViewModel::class){
             SplashViewModel(networkHelper)
         }).get(SplashViewModel::class.java)
+
+    @Provides
+    fun provideMainViewModel( networkHelper: NetworkHelper): MainViewModel= ViewModelProviders
+        .of(activity, ViewModelProviderFactory(MainViewModel::class){
+          MainViewModel(networkHelper)
+        }).get(MainViewModel::class.java)
 
 
 }
